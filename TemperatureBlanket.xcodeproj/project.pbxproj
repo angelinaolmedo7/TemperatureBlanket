@@ -15,6 +15,10 @@
 		29E2ADD02600889A00756342 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29E2ADCE2600889A00756342 /* LaunchScreen.storyboard */; };
 		29E2ADDB2600889A00756342 /* TemperatureBlanketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2ADDA2600889A00756342 /* TemperatureBlanketTests.swift */; };
 		29E2ADE62600889A00756342 /* TemperatureBlanketUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2ADE52600889A00756342 /* TemperatureBlanketUITests.swift */; };
+		29E2ADFA2603137B00756342 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2ADF92603137B00756342 /* NetworkManager.swift */; };
+		29E2AE02260313B300756342 /* CreateSessionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2ADFF260313B300756342 /* CreateSessionResponse.swift */; };
+		29E2AE03260313B300756342 /* WeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE00260313B300756342 /* WeatherResponse.swift */; };
+		29E2AE04260313B300756342 /* LogItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE01260313B300756342 /* LogItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		29E2ADE12600889A00756342 /* TemperatureBlanketUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TemperatureBlanketUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		29E2ADE52600889A00756342 /* TemperatureBlanketUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureBlanketUITests.swift; sourceTree = "<group>"; };
 		29E2ADE72600889A00756342 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		29E2ADF92603137B00756342 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		29E2ADFF260313B300756342 /* CreateSessionResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSessionResponse.swift; sourceTree = "<group>"; };
+		29E2AE00260313B300756342 /* WeatherResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherResponse.swift; sourceTree = "<group>"; };
+		29E2AE01260313B300756342 /* LogItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +107,12 @@
 		29E2ADC22600889700756342 /* TemperatureBlanket */ = {
 			isa = PBXGroup;
 			children = (
+				29E2ADFE260313B300756342 /* Model */,
 				29E2ADC32600889700756342 /* AppDelegate.swift */,
 				29E2ADC52600889700756342 /* SceneDelegate.swift */,
 				29E2ADC72600889700756342 /* ViewController.swift */,
 				29E2ADC92600889700756342 /* Main.storyboard */,
+				29E2AE08260313C300756342 /* Network */,
 				29E2ADCC2600889A00756342 /* Assets.xcassets */,
 				29E2ADCE2600889A00756342 /* LaunchScreen.storyboard */,
 				29E2ADD12600889A00756342 /* Info.plist */,
@@ -126,6 +136,24 @@
 				29E2ADE72600889A00756342 /* Info.plist */,
 			);
 			path = TemperatureBlanketUITests;
+			sourceTree = "<group>";
+		};
+		29E2ADFE260313B300756342 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				29E2ADFF260313B300756342 /* CreateSessionResponse.swift */,
+				29E2AE00260313B300756342 /* WeatherResponse.swift */,
+				29E2AE01260313B300756342 /* LogItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		29E2AE08260313C300756342 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				29E2ADF92603137B00756342 /* NetworkManager.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +286,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29E2ADFA2603137B00756342 /* NetworkManager.swift in Sources */,
+				29E2AE03260313B300756342 /* WeatherResponse.swift in Sources */,
 				29E2ADC82600889700756342 /* ViewController.swift in Sources */,
+				29E2AE04260313B300756342 /* LogItem.swift in Sources */,
+				29E2AE02260313B300756342 /* CreateSessionResponse.swift in Sources */,
 				29E2ADC42600889700756342 /* AppDelegate.swift in Sources */,
 				29E2ADC62600889700756342 /* SceneDelegate.swift in Sources */,
 			);
