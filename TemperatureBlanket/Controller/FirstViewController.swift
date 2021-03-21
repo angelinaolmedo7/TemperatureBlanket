@@ -32,7 +32,6 @@ class FirstViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("hh")
         super.viewWillAppear(animated)
 //        fetchWeather()
         if let blanket = Blanket.retrieveBlanket() {
