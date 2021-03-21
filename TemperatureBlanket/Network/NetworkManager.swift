@@ -33,8 +33,9 @@ class NetworkManager {
         task.resume()
     }
     
-    func getAvgWeather(_ completion: @escaping (Result<WeatherResponse>) -> Void) {
+    func getAvgWeather(_ completion: @escaping (Result<WeatherAvgsResponse>) -> Void) {
         let postsRequest = makeRequest(for: .historicalAvgs)
+        
         let task = urlSession.dataTask(with: postsRequest) { data, response, error in
             // Check for errors.
             if let error = error {
@@ -45,9 +46,17 @@ class NetworkManager {
             guard let data = data else {
                 return completion(Result.failure(EndPointError.noData))
             }
+            
+            do {
+                //Decode retrived data with JSONDecoder and assing type of Station object
+                let stationData = try JSONDecoder().decode(WeatherAvgsResponse.self, from: data)
+            }
+            catch let error {
+                print(error)
+            }
                     
             // Attempt to decode the data.
-            guard let result = try? JSONDecoder().decode(WeatherResponse.self, from: data) else {
+            guard let result = try? JSONDecoder().decode(WeatherAvgsResponse.self, from: data) else {
                 return completion(Result.failure(EndPointError.couldNotParse))
             }
                         

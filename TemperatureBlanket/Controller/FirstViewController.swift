@@ -49,6 +49,14 @@ class FirstViewController: UIViewController {
             switch result {
             case let .success(weather):
                 print(weather)
+            case let .failure(error):
+              print(error)
+            }
+        }
+        networkManager.getWeather() { result in
+            switch result {
+            case let .success(weather):
+                print(weather)
 //                self.weather = weather
             case let .failure(error):
               print(error)

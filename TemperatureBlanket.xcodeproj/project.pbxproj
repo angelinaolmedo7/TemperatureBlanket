@@ -24,6 +24,7 @@
 		29E2AE172606CA0B00756342 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE162606CA0B00756342 /* FirstViewController.swift */; };
 		29E2AE272606E90800756342 /* NewBlanketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE262606E90800756342 /* NewBlanketViewController.swift */; };
 		29E2AE2F2607251800756342 /* config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE2E2607251800756342 /* config.swift */; };
+		29E2AE342607413900756342 /* WeatherAvgsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE332607413900756342 /* WeatherAvgsResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		29E2AE162606CA0B00756342 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		29E2AE262606E90800756342 /* NewBlanketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBlanketViewController.swift; sourceTree = "<group>"; };
 		29E2AE2E2607251800756342 /* config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = config.swift; sourceTree = "<group>"; };
+		29E2AE332607413900756342 /* WeatherAvgsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAvgsResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 			children = (
 				29E2ADFF260313B300756342 /* CreateSessionResponse.swift */,
 				29E2AE00260313B300756342 /* WeatherResponse.swift */,
+				29E2AE332607413900756342 /* WeatherAvgsResponse.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				29E2ADC82600889700756342 /* ViewController.swift in Sources */,
 				29E2AE0D260474C500756342 /* WeatherBracket.swift in Sources */,
 				29E2AE272606E90800756342 /* NewBlanketViewController.swift in Sources */,
+				29E2AE342607413900756342 /* WeatherAvgsResponse.swift in Sources */,
 				29E2AE04260313B300756342 /* LogItem.swift in Sources */,
 				29E2AE172606CA0B00756342 /* FirstViewController.swift in Sources */,
 				29E2AE02260313B300756342 /* CreateSessionResponse.swift in Sources */,
