@@ -8,6 +8,10 @@
 import UIKit
 
 class NewBlanketViewController: UIViewController {
+    
+    var networkManager = NetworkManager()
+    
+    let blanket = Blanket(logs: [], colors: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,11 +21,28 @@ class NewBlanketViewController: UIViewController {
     }
     
     @IBAction func createBlanketPressed(_ sender: Any) {
-        let blanket = Blanket(logs: [], colors: [])
-        Blanket.saveBlanket(blanket: blanket)
-        self.dismiss(animated: true, completion: {
-            self.viewWillAppear(true)
-        })
+        
+        generateColorBracket()
+        
+    }
+    
+    func generateColorBracket()  {
+        networkManager.getAvgWeather() { result in
+            switch result {
+            case let .failure(error):
+                print(error)
+            case let .success(weather):
+                DispatchQueue.main.async {
+                    let brackets = WeatherBracket(APIresponse: weather,
+                                                  colors: ColorPresets.transPride)
+                    self.blanket.colors = brackets
+                    Blanket.saveBlanket(blanket: self.blanket)
+                    self.dismiss(animated: true, completion: {
+                        self.viewWillAppear(true)
+                    })
+                }
+            }
+        }
     }
     
     /*
