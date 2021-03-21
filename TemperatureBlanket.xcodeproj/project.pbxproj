@@ -25,6 +25,7 @@
 		29E2AE272606E90800756342 /* NewBlanketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE262606E90800756342 /* NewBlanketViewController.swift */; };
 		29E2AE2F2607251800756342 /* config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE2E2607251800756342 /* config.swift */; };
 		29E2AE342607413900756342 /* WeatherAvgsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE332607413900756342 /* WeatherAvgsResponse.swift */; };
+		29E2AE392607637600756342 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE382607637600756342 /* UIColorExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		29E2AE262606E90800756342 /* NewBlanketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBlanketViewController.swift; sourceTree = "<group>"; };
 		29E2AE2E2607251800756342 /* config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = config.swift; sourceTree = "<group>"; };
 		29E2AE332607413900756342 /* WeatherAvgsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAvgsResponse.swift; sourceTree = "<group>"; };
+		29E2AE382607637600756342 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 				29E2AE11260474DF00756342 /* Blanket.swift */,
 				29E2AE01260313B300756342 /* LogItem.swift */,
 				29E2AE0C260474C500756342 /* WeatherBracket.swift */,
+				29E2AE382607637600756342 /* UIColorExtensions.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				29E2ADFA2603137B00756342 /* NetworkManager.swift in Sources */,
+				29E2AE392607637600756342 /* UIColorExtensions.swift in Sources */,
 				29E2AE03260313B300756342 /* WeatherResponse.swift in Sources */,
 				29E2ADC82600889700756342 /* ViewController.swift in Sources */,
 				29E2AE0D260474C500756342 /* WeatherBracket.swift in Sources */,

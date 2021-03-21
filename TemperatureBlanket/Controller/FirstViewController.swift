@@ -33,7 +33,6 @@ class FirstViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchWeather()
         if let blanket = Blanket.retrieveBlanket() {
             self.blanket = blanket
             print(self.blanket)
@@ -44,25 +43,25 @@ class FirstViewController: UIViewController {
         }
     }
     
-    func fetchWeather() {
-        networkManager.getAvgWeather() { result in
-            switch result {
-            case let .success(weather):
-                print(weather)
-            case let .failure(error):
-              print(error)
-            }
-        }
-        networkManager.getWeather() { result in
-            switch result {
-            case let .success(weather):
-                print(weather)
+//    func fetchWeather() {
+//        networkManager.getAvgWeather() { result in
+//            switch result {
+//            case let .success(weather):
+//                print(weather)
+//            case let .failure(error):
+//              print(error)
+//            }
+//        }
+//        networkManager.getWeather() { result in
+//            switch result {
+//            case let .success(weather):
+//                print(weather)
 //                self.weather = weather
-            case let .failure(error):
-              print(error)
-            }
-        }
-    }
+//            case let .failure(error):
+//              print(error)
+//            }
+//        }
+//    }
     
 
     /*
