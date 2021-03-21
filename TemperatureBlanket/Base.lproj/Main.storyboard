@@ -60,8 +60,65 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7O2-Xq-5UK">
+                                        <rect key="frame" x="0.0" y="20.5" width="394" height="216"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Palette:" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zys-eL-YTj">
+                                                <rect key="frame" x="0.0" y="0.0" width="165.5" height="216"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UBo-iT-hsf" userLabel="PaletteSelection">
+                                                <rect key="frame" x="165.5" y="0.0" width="228.5" height="216"/>
+                                            </pickerView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NSI-Ct-f5M" userLabel="PaletteDisplay">
+                                        <rect key="frame" x="0.0" y="236.5" width="394" height="56.5"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="McO-YI-vrf">
+                                                <rect key="frame" x="0.0" y="0.0" width="56.5" height="56.5"/>
+                                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="McO-YI-vrf" secondAttribute="height" multiplier="1:1" id="isC-HC-Uza"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LGi-OU-a4o">
+                                                <rect key="frame" x="56.5" y="0.0" width="56" height="56.5"/>
+                                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uls-bb-poa">
+                                                <rect key="frame" x="112.5" y="0.0" width="56.5" height="56.5"/>
+                                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j6n-qO-8DP">
+                                                <rect key="frame" x="169" y="0.0" width="56" height="56.5"/>
+                                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gfq-Ie-5Vb">
+                                                <rect key="frame" x="225" y="0.0" width="56.5" height="56.5"/>
+                                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NEC-AP-zpB">
+                                                <rect key="frame" x="281.5" y="0.0" width="56" height="56.5"/>
+                                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gB0-MA-ufX">
+                                                <rect key="frame" x="337.5" y="0.0" width="56.5" height="56.5"/>
+                                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="McO-YI-vrf" firstAttribute="width" secondItem="gB0-MA-ufX" secondAttribute="width" id="BHy-Hr-YwO"/>
+                                            <constraint firstItem="McO-YI-vrf" firstAttribute="width" secondItem="NEC-AP-zpB" secondAttribute="width" id="CvD-7P-dgh"/>
+                                            <constraint firstItem="McO-YI-vrf" firstAttribute="width" secondItem="j6n-qO-8DP" secondAttribute="width" id="Mem-q7-Kw2"/>
+                                            <constraint firstItem="McO-YI-vrf" firstAttribute="width" secondItem="uls-bb-poa" secondAttribute="width" id="UQC-pY-mKh"/>
+                                            <constraint firstItem="McO-YI-vrf" firstAttribute="width" secondItem="Gfq-Ie-5Vb" secondAttribute="width" id="i3G-hA-acS"/>
+                                            <constraint firstItem="McO-YI-vrf" firstAttribute="width" secondItem="LGi-OU-a4o" secondAttribute="width" id="ssl-wQ-ONv"/>
+                                        </constraints>
+                                    </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zZ3-du-yB2">
-                                        <rect key="frame" x="0.0" y="20.5" width="394" height="757.5"/>
+                                        <rect key="frame" x="0.0" y="293" width="394" height="485"/>
                                         <state key="normal" title="Create Blanket"/>
                                         <connections>
                                             <action selector="createBlanketPressed:" destination="55t-FT-ZFL" eventType="touchUpInside" id="SS3-fU-MIN"/>
@@ -76,10 +133,15 @@
                             <constraint firstItem="krO-eu-xAG" firstAttribute="top" secondItem="WSa-Ty-i8y" secondAttribute="top" constant="20" id="PBN-B5-SqP"/>
                             <constraint firstItem="WSa-Ty-i8y" firstAttribute="trailing" secondItem="krO-eu-xAG" secondAttribute="trailing" constant="10" id="YeP-sI-81b"/>
                             <constraint firstItem="krO-eu-xAG" firstAttribute="leading" secondItem="WSa-Ty-i8y" secondAttribute="leading" constant="10" id="niA-kl-hxI"/>
+                            <constraint firstItem="zys-eL-YTj" firstAttribute="width" secondItem="WSa-Ty-i8y" secondAttribute="width" multiplier="0.4" id="sYf-B8-d6h"/>
                             <constraint firstItem="WSa-Ty-i8y" firstAttribute="bottom" secondItem="krO-eu-xAG" secondAttribute="bottom" constant="20" id="wSr-D7-FVB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0hh-w8-eCX"/>
+                    <connections>
+                        <outlet property="paletteDisplayStackView" destination="NSI-Ct-f5M" id="HhM-ed-NRZ"/>
+                        <outlet property="palettePickerView" destination="UBo-iT-hsf" id="W6B-Sv-Lya"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tHO-Ev-YzN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

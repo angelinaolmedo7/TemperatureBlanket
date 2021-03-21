@@ -91,14 +91,14 @@ struct ColorPalette: Codable {
 struct ColorPresets {
     static let empty = ColorPalette(colors: ["FFFFFF", "FFFFFF", "FFFFFF", "FFFFFF", "FFFFFF", "FFFFFF", "FFFFFF"],
                                   name: "Empty")
-    static let warmToCool = ColorPalette(colors: ["ED512A", "FA9062", "FFDD9E", "FAF3DD", "B8F2E6", "9BD1D9", "5C6989"],
-                                  name: "Empty")
-    static let transPride = ColorPalette(colors: ["F7B6CD", "FCD9DB", "FFEBE6", "FFFFFF", "D1E0EB", "B5CFE3", "84B4D7"],
+    static let coolToWarm = ColorPalette(colors: ["5C6989", "9BD1D9", "B8F2E6", "FAF3DD", "FFDD9E", "FA9062", "ED512A"],
+                                  name: "Cool to Warm")
+    static let transPride = ColorPalette(colors: ["65A2CD", "A6C5DD", "D7E9F7", "FFFFFF", "FFDED6", "F9B4B7", "F391B3"],
                                   name: "Trans Pride")
     static let easter = ColorPalette(colors: ["37E6E3", "90F1EF", "FFD6E0", "FFEF9F", "C1FBA4", "7BF1A8", "47EB86"],
                               name: "Easter")
     
-    static let palettes = [warmToCool, transPride, easter]
+    static let palettes = [coolToWarm, transPride, easter]
 }
 
 struct WeatherYearlyAvgs: Codable {
