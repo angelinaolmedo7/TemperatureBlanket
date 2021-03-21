@@ -5,7 +5,6 @@ class NetworkManager {
     // shared singleton session object used to run tasks. Will be useful later
     let urlSession = URLSession.shared
 
-    var baseURL = "https://api.openweathermap.org/data/2.5/"
     var token = ""
     
     func getWeather(_ completion: @escaping (Result<WeatherResponse>) -> Void) {
@@ -36,7 +35,14 @@ class NetworkManager {
     
     enum EndPoints {
         case weather
-        // determine which path to provide for the API request
+        
+        func getBaseURL() -> String {
+            switch self {
+            case .weather:
+                return "https://api.openweathermap.org/data/2.5/"
+            }
+        }
+        
         func getPath() -> String {
             switch self {
             case .weather:
@@ -44,12 +50,10 @@ class NetworkManager {
             }
         }
         
-        // We're only ever calling GET for now, but this could be built out if that were to change
         func getHTTPMethod() -> String {
             return "GET"
         }
         
-        // Same headers we used for Postman
         func getHeaders(token: String) -> [String: String] {
             return [
                 "Accept": "application/json",
@@ -57,7 +61,6 @@ class NetworkManager {
             ]
         }
         
-        // grab the parameters for the appropriate object (post or comment)
         func getParams() -> [String: String] {
             switch self {
             case .weather:
@@ -77,8 +80,9 @@ class NetworkManager {
         }
     }
     
-    // All the code we did before but cleaned up into their own methods
     private func makeRequest(for endPoint: EndPoints) -> URLRequest {
+        // get the base URL for the API
+        let baseURL = endPoint.getBaseURL()
         // grab the parameters from the endpoint and convert them into a string
         let stringParams = endPoint.paramsToString()
         // get the path of the endpoint
