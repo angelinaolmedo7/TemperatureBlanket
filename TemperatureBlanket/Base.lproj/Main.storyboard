@@ -43,6 +43,48 @@
             </objects>
             <point key="canvasLocation" x="95.652173913043484" y="93.75"/>
         </scene>
+        <!--New Blanket View Controller-->
+        <scene sceneID="AQ7-mV-SeG">
+            <objects>
+                <viewController id="55t-FT-ZFL" customClass="NewBlanketViewController" customModule="TemperatureBlanket" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0ld-qy-FnC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="krO-eu-xAG">
+                                <rect key="frame" x="10" y="64" width="394" height="778"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a new blanket" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kb9-tc-MoK">
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zZ3-du-yB2">
+                                        <rect key="frame" x="0.0" y="20.5" width="394" height="757.5"/>
+                                        <state key="normal" title="Create Blanket"/>
+                                        <connections>
+                                            <action selector="createBlanketPressed:" destination="55t-FT-ZFL" eventType="touchUpInside" id="SS3-fU-MIN"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="WSa-Ty-i8y"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="krO-eu-xAG" firstAttribute="top" secondItem="WSa-Ty-i8y" secondAttribute="top" constant="20" id="PBN-B5-SqP"/>
+                            <constraint firstItem="WSa-Ty-i8y" firstAttribute="trailing" secondItem="krO-eu-xAG" secondAttribute="trailing" constant="10" id="YeP-sI-81b"/>
+                            <constraint firstItem="krO-eu-xAG" firstAttribute="leading" secondItem="WSa-Ty-i8y" secondAttribute="leading" constant="10" id="niA-kl-hxI"/>
+                            <constraint firstItem="WSa-Ty-i8y" firstAttribute="bottom" secondItem="krO-eu-xAG" secondAttribute="bottom" constant="20" id="wSr-D7-FVB"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="0hh-w8-eCX"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tHO-Ev-YzN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-826" y="856"/>
+        </scene>
         <!--Today-->
         <scene sceneID="rG8-Ca-qJq">
             <objects>
@@ -104,6 +146,31 @@
                     <view key="view" contentMode="scaleToFill" id="09j-Oo-ZVt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wG3-N5-jzI">
+                                <rect key="frame" x="150" y="778" width="116" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="placeholder-new"/>
+                                <connections>
+                                    <segue destination="55t-FT-ZFL" kind="presentation" identifier="newBlanket" modalPresentationStyle="fullScreen" id="Ni9-va-ZF1"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading your project..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wtE-ma-VBk">
+                                <rect key="frame" x="121" y="438" width="171" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bc-cV-Yec">
+                                <rect key="frame" x="47" y="778" width="81" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="placeholder"/>
+                                <connections>
+                                    <segue destination="Xe1-6o-yab" kind="presentation" identifier="blanketLoaded" modalPresentationStyle="fullScreen" id="xeJ-r2-CGl"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="shH-IU-Ysm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>

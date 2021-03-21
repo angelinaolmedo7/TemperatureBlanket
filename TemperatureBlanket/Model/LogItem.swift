@@ -16,8 +16,8 @@ class LogItem: Codable {
     }
     
     //MARK: Archiving Paths
-    static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
-    static let ArchiveURL = DocumentsDirectory.appendingPathComponent("logs")
+//    static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+//    static let ArchiveURL = DocumentsDirectory.appendingPathComponent("logs")
     
     init(weather: WeatherResponse) {
         self.date = NSDate.now.description(with: Locale(identifier: "en_US"))
@@ -41,7 +41,7 @@ class LogItem: Codable {
     
     // WRITE LOGS
     
-//    func saveLogs() {
+//    static func saveLogs(logs: [LogItem]) {
 //        let encoder = JSONEncoder()
 //        if let encoded = try? encoder.encode(logs) {
 //            do {
@@ -53,22 +53,23 @@ class LogItem: Codable {
 //        }
 //    }
 //
-//    func retrieveLogs() {
+//    static func retrieveLogs() -> [LogItem]? {
 //        do {
 //            let savedData = try Data.init(contentsOf: URL(fileURLWithPath: LogItem.ArchiveURL.path))
 //            let decoder = JSONDecoder()
 //            if let decoded = try? decoder.decode([LogItem].self, from: savedData) {
-//                logs = decoded
+//                return decoded
 //            }
 //        }
 //        catch {
 //            print("Could not retrieve data from file.")
 //        }
+//        return nil
 //    }
 //
-//    func clearLogs() {
-//        self.logs = []
-//        saveLogs()
+//    static func clearLogs() {
+//        let logs: [LogItem] = []
+//        saveLogs(logs: logs)
 //    }
 
 }

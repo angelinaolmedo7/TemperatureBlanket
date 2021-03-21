@@ -10,18 +10,39 @@ import UIKit
 class FirstViewController: UIViewController {
     
     var networkManager = NetworkManager()
+    var blanket: Blanket? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        Blanket.clearBlanket()
 
         // Do any additional setup after loading the view.
     }
     
+    func proceedToBlanket() {
+        DispatchQueue.main.async {
+           self.performSegue(withIdentifier: "blanketLoaded", sender: nil)
+        }
+    }
+    
+    func proceedToNewBlanket() {
+        DispatchQueue.main.async {
+           self.performSegue(withIdentifier: "newBlanket", sender: nil)
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
+        print("hh")
         super.viewWillAppear(animated)
-//        clearLogs()
-        fetchWeather()
-//        retrieveLogs()
+//        fetchWeather()
+        if let blanket = Blanket.retrieveBlanket() {
+            self.blanket = blanket
+            print(self.blanket)
+            proceedToBlanket()
+        }
+        else {
+            proceedToNewBlanket()
+        }
     }
     
     func fetchWeather() {
