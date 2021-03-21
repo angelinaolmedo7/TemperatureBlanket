@@ -45,7 +45,7 @@ class FirstViewController: UIViewController {
     }
     
     func fetchWeather() {
-        networkManager.getWeather() { result in
+        networkManager.getAvgWeather() { result in
             switch result {
             case let .success(weather):
                 print(weather)

@@ -8,38 +8,67 @@ class NetworkManager {
     var token = ""
     
     func getWeather(_ completion: @escaping (Result<WeatherResponse>) -> Void) {
-       let postsRequest = makeRequest(for: .weather)
-       let task = urlSession.dataTask(with: postsRequest) { data, response, error in
-           // Check for errors.
-           if let error = error {
-               return completion(Result.failure(error))
-           }
+        let postsRequest = makeRequest(for: .weather)
+        let task = urlSession.dataTask(with: postsRequest) { data, response, error in
+            // Check for errors.
+            if let error = error {
+                return completion(Result.failure(error))
+            }
 
-           // Check to see if there is any data that was retrieved.
-           guard let data = data else {
-               return completion(Result.failure(EndPointError.noData))
-           }
-                
-           // Attempt to decode the data.
-           guard let result = try? JSONDecoder().decode(WeatherResponse.self, from: data) else {
-               return completion(Result.failure(EndPointError.couldNotParse))
-           }
+            // Check to see if there is any data that was retrieved.
+            guard let data = data else {
+                return completion(Result.failure(EndPointError.noData))
+            }
+                    
+            // Attempt to decode the data.
+            guard let result = try? JSONDecoder().decode(WeatherResponse.self, from: data) else {
+                return completion(Result.failure(EndPointError.couldNotParse))
+            }
                         
-           // Return the result with the completion handler.
-           DispatchQueue.main.async {
-               completion(Result.success(result))
-           }
-       }
-       task.resume()
+            // Return the result with the completion handler.
+            DispatchQueue.main.async {
+                completion(Result.success(result))
+            }
+        }
+        task.resume()
+    }
+    
+    func getAvgWeather(_ completion: @escaping (Result<WeatherResponse>) -> Void) {
+        let postsRequest = makeRequest(for: .historicalAvgs)
+        let task = urlSession.dataTask(with: postsRequest) { data, response, error in
+            // Check for errors.
+            if let error = error {
+                return completion(Result.failure(error))
+            }
+
+            // Check to see if there is any data that was retrieved.
+            guard let data = data else {
+                return completion(Result.failure(EndPointError.noData))
+            }
+                    
+            // Attempt to decode the data.
+            guard let result = try? JSONDecoder().decode(WeatherResponse.self, from: data) else {
+                return completion(Result.failure(EndPointError.couldNotParse))
+            }
+                        
+            // Return the result with the completion handler.
+            DispatchQueue.main.async {
+                completion(Result.success(result))
+            }
+        }
+        task.resume()
     }
     
     enum EndPoints {
         case weather
+        case historicalAvgs
         
         func getBaseURL() -> String {
             switch self {
             case .weather:
                 return "https://api.openweathermap.org/data/2.5/"
+            case .historicalAvgs:
+                return "https://api.worldweatheronline.com/premium/v1/"
             }
         }
         
@@ -47,6 +76,8 @@ class NetworkManager {
             switch self {
             case .weather:
                 return "weather"
+            case .historicalAvgs:
+                return "weather.ashx"
             }
         }
         
@@ -67,6 +98,16 @@ class NetworkManager {
                 return [
                     "zip": "94108",  // TODO: REMOVE PLACEHOLDER
                     "appid": "25923e26c318157537e1fa24b59a7ae8"
+                ]
+            case .historicalAvgs:
+                return [
+                    "key": config["WWO_KEY"]!,
+                    "q": "94108",  // TODO: REMOVE PLACEHOLDER
+                    "fx": "no",
+                    "cc": "no",
+                    "mca": "yes",
+                    "format": "json",
+                    
                 ]
             }
         }
@@ -90,6 +131,7 @@ class NetworkManager {
         // create the full url from the above variables
         let fullURL = URL(string: baseURL.appending("\(path)?\(stringParams)"))!
         // build the request
+        print(fullURL)
         var request = URLRequest(url: fullURL)
         request.httpMethod = endPoint.getHTTPMethod()
         request.allHTTPHeaderFields = endPoint.getHeaders(token: token)
