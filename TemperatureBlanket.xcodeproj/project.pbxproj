@@ -21,6 +21,7 @@
 		29E2AE04260313B300756342 /* LogItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE01260313B300756342 /* LogItem.swift */; };
 		29E2AE0D260474C500756342 /* WeatherBracket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE0C260474C500756342 /* WeatherBracket.swift */; };
 		29E2AE12260474DF00756342 /* RecordedDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE11260474DF00756342 /* RecordedDay.swift */; };
+		29E2AE172606CA0B00756342 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE162606CA0B00756342 /* FirstViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		29E2AE01260313B300756342 /* LogItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogItem.swift; sourceTree = "<group>"; };
 		29E2AE0C260474C500756342 /* WeatherBracket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherBracket.swift; sourceTree = "<group>"; };
 		29E2AE11260474DF00756342 /* RecordedDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordedDay.swift; sourceTree = "<group>"; };
+		29E2AE162606CA0B00756342 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				29E2ADFE260313B300756342 /* Model */,
+				29E2AE1C2606CA2500756342 /* Controller */,
 				29E2ADC32600889700756342 /* AppDelegate.swift */,
 				29E2ADC52600889700756342 /* SceneDelegate.swift */,
 				29E2ADC72600889700756342 /* ViewController.swift */,
@@ -145,10 +148,9 @@
 		29E2ADFE260313B300756342 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				29E2ADFF260313B300756342 /* CreateSessionResponse.swift */,
+				29E2AE1B2606CA1000756342 /* Network */,
 				29E2AE0C260474C500756342 /* WeatherBracket.swift */,
 				29E2AE11260474DF00756342 /* RecordedDay.swift */,
-				29E2AE00260313B300756342 /* WeatherResponse.swift */,
 				29E2AE01260313B300756342 /* LogItem.swift */,
 			);
 			path = Model;
@@ -160,6 +162,23 @@
 				29E2ADF92603137B00756342 /* NetworkManager.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		29E2AE1B2606CA1000756342 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				29E2ADFF260313B300756342 /* CreateSessionResponse.swift */,
+				29E2AE00260313B300756342 /* WeatherResponse.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		29E2AE1C2606CA2500756342 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				29E2AE162606CA0B00756342 /* FirstViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,6 +316,7 @@
 				29E2ADC82600889700756342 /* ViewController.swift in Sources */,
 				29E2AE0D260474C500756342 /* WeatherBracket.swift in Sources */,
 				29E2AE04260313B300756342 /* LogItem.swift in Sources */,
+				29E2AE172606CA0B00756342 /* FirstViewController.swift in Sources */,
 				29E2AE02260313B300756342 /* CreateSessionResponse.swift in Sources */,
 				29E2AE12260474DF00756342 /* RecordedDay.swift in Sources */,
 				29E2ADC42600889700756342 /* AppDelegate.swift in Sources */,

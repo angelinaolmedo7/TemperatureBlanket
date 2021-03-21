@@ -19,7 +19,6 @@ extension Weather: Decodable {
 
 struct Main {
     let temp: Double?
-    let humidity: Int?
     
     static func kelvinToF(kel: Double) -> Double {
         return ((kel - 273.15) * 9/5 + 32)
