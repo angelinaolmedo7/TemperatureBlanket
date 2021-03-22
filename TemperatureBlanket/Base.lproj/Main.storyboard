@@ -121,13 +121,14 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7O2-Xq-5UK">
                                         <rect key="frame" x="0.0" y="115" width="394" height="122.5"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Palette:" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zys-eL-YTj">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Palette:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRD-ww-lW3" userLabel="PaletteLabel">
                                                 <rect key="frame" x="0.0" y="0.0" width="165.5" height="122.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UBo-iT-hsf" userLabel="PaletteSelection">
-                                                <rect key="frame" x="166" y="0.0" width="228" height="122"/>
+                                                <rect key="frame" x="165.5" y="0.0" width="228.5" height="122.5"/>
                                             </pickerView>
                                         </subviews>
                                     </stackView>
@@ -183,6 +184,9 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="oRD-ww-lW3" firstAttribute="width" secondItem="PU7-pD-eyM" secondAttribute="width" id="bia-uX-o4d"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WSa-Ty-i8y"/>
@@ -193,7 +197,6 @@
                             <constraint firstItem="WSa-Ty-i8y" firstAttribute="trailing" secondItem="krO-eu-xAG" secondAttribute="trailing" constant="10" id="YeP-sI-81b"/>
                             <constraint firstItem="PU7-pD-eyM" firstAttribute="width" secondItem="WSa-Ty-i8y" secondAttribute="width" multiplier="0.4" id="ebT-Kk-CXR"/>
                             <constraint firstItem="krO-eu-xAG" firstAttribute="leading" secondItem="WSa-Ty-i8y" secondAttribute="leading" constant="10" id="niA-kl-hxI"/>
-                            <constraint firstItem="zys-eL-YTj" firstAttribute="width" secondItem="WSa-Ty-i8y" secondAttribute="width" multiplier="0.4" id="sYf-B8-d6h"/>
                             <constraint firstItem="WSa-Ty-i8y" firstAttribute="bottom" secondItem="krO-eu-xAG" secondAttribute="bottom" constant="20" id="wSr-D7-FVB"/>
                         </constraints>
                     </view>

@@ -41,14 +41,16 @@ class NewBlanketViewController: UIViewController {
     }
     
     func generateColorBracket()  {
-        networkManager.getAvgWeather(zip: self.blanket.zipcode) { result in
+        networkManager.getAPIresponse(query: self.blanket.zipcode, endpoint: .historicalAvgs) { result in
             switch result {
             case let .failure(error):
                 print(error)
             case let .success(weather):
                 DispatchQueue.main.async {
-                    let brackets = WeatherBracket(APIresponse: weather,
+                    let brackets = WeatherBracket(APIresponse: weather as! WeatherAvgsResponse,
                                                   colors: ColorPresets.transPride)
+                    print("From zip \(self.blanket.zipcode) generated the following brackets:")
+                    print("\(brackets)")
                     self.blanket.colors = brackets
                     Blanket.saveBlanket(blanket: self.blanket)
                     self.dismiss(animated: true, completion: {

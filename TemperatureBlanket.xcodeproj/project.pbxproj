@@ -26,6 +26,8 @@
 		29E2AE2F2607251800756342 /* config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE2E2607251800756342 /* config.swift */; };
 		29E2AE342607413900756342 /* WeatherAvgsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE332607413900756342 /* WeatherAvgsResponse.swift */; };
 		29E2AE392607637600756342 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE382607637600756342 /* UIColorExtensions.swift */; };
+		29E2AE3E26090F2300756342 /* LatLongResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE3D26090F2300756342 /* LatLongResponse.swift */; };
+		29E2AE432609206D00756342 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE422609206D00756342 /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		29E2AE2E2607251800756342 /* config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = config.swift; sourceTree = "<group>"; };
 		29E2AE332607413900756342 /* WeatherAvgsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAvgsResponse.swift; sourceTree = "<group>"; };
 		29E2AE382607637600756342 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		29E2AE3D26090F2300756342 /* LatLongResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatLongResponse.swift; sourceTree = "<group>"; };
+		29E2AE422609206D00756342 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +163,7 @@
 			children = (
 				29E2AE1B2606CA1000756342 /* Network */,
 				29E2AE11260474DF00756342 /* Blanket.swift */,
+				29E2AE422609206D00756342 /* Location.swift */,
 				29E2AE01260313B300756342 /* LogItem.swift */,
 				29E2AE0C260474C500756342 /* WeatherBracket.swift */,
 				29E2AE382607637600756342 /* UIColorExtensions.swift */,
@@ -180,6 +185,7 @@
 				29E2ADFF260313B300756342 /* CreateSessionResponse.swift */,
 				29E2AE00260313B300756342 /* WeatherResponse.swift */,
 				29E2AE332607413900756342 /* WeatherAvgsResponse.swift */,
+				29E2AE3D26090F2300756342 /* LatLongResponse.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -325,6 +331,7 @@
 			files = (
 				29E2ADFA2603137B00756342 /* NetworkManager.swift in Sources */,
 				29E2AE392607637600756342 /* UIColorExtensions.swift in Sources */,
+				29E2AE432609206D00756342 /* Location.swift in Sources */,
 				29E2AE03260313B300756342 /* WeatherResponse.swift in Sources */,
 				29E2ADC82600889700756342 /* ViewController.swift in Sources */,
 				29E2AE0D260474C500756342 /* WeatherBracket.swift in Sources */,
@@ -337,6 +344,7 @@
 				29E2AE2F2607251800756342 /* config.swift in Sources */,
 				29E2ADC42600889700756342 /* AppDelegate.swift in Sources */,
 				29E2ADC62600889700756342 /* SceneDelegate.swift in Sources */,
+				29E2AE3E26090F2300756342 /* LatLongResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

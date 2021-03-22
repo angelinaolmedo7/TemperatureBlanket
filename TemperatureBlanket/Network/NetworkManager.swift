@@ -2,39 +2,41 @@
 import Foundation
 
 class NetworkManager {
-    // shared singleton session object used to run tasks. Will be useful later
+    // shared singleton session object used to run tasks
     let urlSession = URLSession.shared
 
-    var token = ""
+    var token = ""  // shouldn't need this
     
-    func getWeather(zip: String="94108", _ completion: @escaping (Result<WeatherResponse>) -> Void) {
-        let postsRequest = makeRequest(zip: zip, for: .weather)
-        let task = urlSession.dataTask(with: postsRequest) { data, response, error in
-            // Check for errors.
-            if let error = error {
-                return completion(Result.failure(error))
-            }
-
-            // Check to see if there is any data that was retrieved.
-            guard let data = data else {
-                return completion(Result.failure(EndPointError.noData))
-            }
-                    
-            // Attempt to decode the data.
-            guard let result = try? JSONDecoder().decode(WeatherResponse.self, from: data) else {
-                return completion(Result.failure(EndPointError.couldNotParse))
-            }
-                        
-            // Return the result with the completion handler.
-            DispatchQueue.main.async {
-                completion(Result.success(result))
-            }
-        }
-        task.resume()
-    }
+    // made generic in getAPIresponse()
+//    func getAvgWeather(zip: String="94108", _ completion: @escaping (Result<WeatherAvgsResponse>) -> Void) {
+//        let postsRequest = makeRequest(zip: zip, for: .historicalAvgs)
+//
+//        let task = urlSession.dataTask(with: postsRequest) { data, response, error in
+//            // Check for errors.
+//            if let error = error {
+//                return completion(Result.failure(error))
+//            }
+//
+//            // Check to see if there is any data that was retrieved.
+//            guard let data = data else {
+//                return completion(Result.failure(EndPointError.noData))
+//            }
+//
+//            // Attempt to decode the data.
+//            guard let result = try? JSONDecoder().decode(WeatherAvgsResponse.self, from: data) else {
+//                return completion(Result.failure(EndPointError.couldNotParse))
+//            }
+//
+//            // Return the result with the completion handler.
+//            DispatchQueue.main.async {
+//                completion(Result.success(result))
+//            }
+//        }
+//        task.resume()
+//    }
     
-    func getAvgWeather(zip: String="94108", _ completion: @escaping (Result<WeatherAvgsResponse>) -> Void) {
-        let postsRequest = makeRequest(zip: zip, for: .historicalAvgs)
+    func getAPIresponse(query: String="94108", endpoint: EndPoints, _ completion: @escaping (Result<Any>) -> Void) {
+        let postsRequest = makeRequest(query: query, for: endpoint)
         
         let task = urlSession.dataTask(with: postsRequest) { data, response, error in
             // Check for errors.
@@ -48,13 +50,28 @@ class NetworkManager {
             }
                     
             // Attempt to decode the data.
-            guard let result = try? JSONDecoder().decode(WeatherAvgsResponse.self, from: data) else {
-                return completion(Result.failure(EndPointError.couldNotParse))
+            let result: Any?
+            switch endpoint {
+            case .weather:
+                guard let res = try? JSONDecoder().decode(WeatherResponse.self, from: data) else {
+                    return completion(Result.failure(EndPointError.couldNotParse))
+                }
+                result = res
+            case .historicalAvgs:
+                guard let res = try? JSONDecoder().decode(WeatherAvgsResponse.self, from: data) else {
+                    return completion(Result.failure(EndPointError.couldNotParse))
+                }
+                result = res
+            case .latlong:
+                guard let res = try? JSONDecoder().decode(WeatherAvgsResponse.self, from: data) else {
+                    return completion(Result.failure(EndPointError.couldNotParse))
+                }
+                result = res
             }
-                        
+        
             // Return the result with the completion handler.
             DispatchQueue.main.async {
-                completion(Result.success(result))
+                completion(Result.success(result!))
             }
         }
         task.resume()
@@ -63,6 +80,7 @@ class NetworkManager {
     enum EndPoints {
         case weather
         case historicalAvgs
+        case latlong
         
         func getBaseURL() -> String {
             switch self {
@@ -70,6 +88,8 @@ class NetworkManager {
                 return "https://api.openweathermap.org/data/2.5/"
             case .historicalAvgs:
                 return "https://api.worldweatheronline.com/premium/v1/"
+            case .latlong:
+                return "https://public.opendatasoft.com/api/records/1.0/"
             }
         }
         
@@ -79,6 +99,8 @@ class NetworkManager {
                 return "weather"
             case .historicalAvgs:
                 return "weather.ashx"
+            case .latlong:
+                return "search"
             }
         }
         
@@ -93,28 +115,33 @@ class NetworkManager {
             ]
         }
         
-        func getParams(_ zip: String="94108") -> [String: String] {
+        func getParams(_ query: String="94108") -> [String: String] {
             switch self {
             case .weather:
                 return [
-                    "zip": zip,
-                    "appid": "25923e26c318157537e1fa24b59a7ae8"
+                    "zip": query,
+                    "appid": "25923e26c318157537e1fa24b59a7ae8",
                 ]
             case .historicalAvgs:
                 return [
                     "key": config["WWO_KEY"]!,
-                    "q": zip,
+                    "q": query,
                     "fx": "no",
                     "cc": "no",
                     "mca": "yes",
                     "format": "json",
                     
                 ]
+            case .latlong:
+                return [
+                    "dataset": "us-zip-code-latitude-and-longitude",
+                    "q": query,
+                ]
             }
         }
         
-        func paramsToString(_ zip: String="94108") -> String {
-            let parameterArray = getParams(zip).map { key, value in
+        func paramsToString(_ query: String="94108") -> String {
+            let parameterArray = getParams(query).map { key, value in
                 return "\(key)=\(value)"
             }
 
@@ -122,11 +149,11 @@ class NetworkManager {
         }
     }
     
-    private func makeRequest(zip: String="94108", for endPoint: EndPoints) -> URLRequest {
+    private func makeRequest(query: String="94108", for endPoint: EndPoints) -> URLRequest {
         // get the base URL for the API
         let baseURL = endPoint.getBaseURL()
         // grab the parameters from the endpoint and convert them into a string
-        let stringParams = endPoint.paramsToString(zip)
+        let stringParams = endPoint.paramsToString(query)
         // get the path of the endpoint
         let path = endPoint.getPath()
         // create the full url from the above variables
