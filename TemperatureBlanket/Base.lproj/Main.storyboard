@@ -15,8 +15,44 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BkW-9h-J1S">
+                                <rect key="frame" x="10" y="98" width="394" height="705"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJb-E7-YqL">
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="41"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kzd-8R-nDn">
+                                        <rect key="frame" x="0.0" y="51" width="394" height="296.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kbM-Ll-AHj">
+                                        <rect key="frame" x="0.0" y="357.5" width="394" height="296.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZWL-4w-HVi">
+                                        <rect key="frame" x="0.0" y="664" width="394" height="41"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Kzd-8R-nDn" firstAttribute="height" secondItem="kbM-Ll-AHj" secondAttribute="height" id="U7g-fu-jkd"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BkW-9h-J1S" secondAttribute="bottom" constant="10" id="Lmo-QX-OBs"/>
+                            <constraint firstItem="BkW-9h-J1S" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="e6S-VB-pS2"/>
+                            <constraint firstItem="BkW-9h-J1S" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="rAd-g7-lPR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BkW-9h-J1S" secondAttribute="trailing" constant="10" id="uhW-cd-Tmv"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="XL4-qD-zkX"/>
                 </viewController>
@@ -85,7 +121,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UBo-iT-hsf" userLabel="PaletteSelection">
-                                                <rect key="frame" x="165.5" y="0.0" width="228.5" height="122.5"/>
+                                                <rect key="frame" x="166" y="0.0" width="228" height="122"/>
                                             </pickerView>
                                         </subviews>
                                     </stackView>
