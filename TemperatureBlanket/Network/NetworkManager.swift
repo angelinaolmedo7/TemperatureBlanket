@@ -35,7 +35,7 @@ class NetworkManager {
 //        task.resume()
 //    }
     
-    func getAPIresponse(query: String="94108", endpoint: EndPoints, _ completion: @escaping (Result<Any>) -> Void) {
+    func getAPIresponse(query: [String], endpoint: EndPoints, _ completion: @escaping (Result<Any>) -> Void) {
         let postsRequest = makeRequest(query: query, for: endpoint)
         
         let task = urlSession.dataTask(with: postsRequest) { data, response, error in
@@ -62,7 +62,7 @@ class NetworkManager {
                     return completion(Result.failure(EndPointError.couldNotParse))
                 }
                 result = res
-            case .latlong:                
+            case .latlong:
                 guard let res = try? JSONDecoder().decode(LatLongResponse.self, from: data) else {
                     return completion(Result.failure(EndPointError.couldNotParse))
                 }
@@ -115,17 +115,17 @@ class NetworkManager {
             ]
         }
         
-        func getParams(_ query: String="94108") -> [String: String] {
+        func getParams(_ query: [String]) -> [String: String] {
             switch self {
             case .weather:
                 return [
-                    "zip": query,
+                    "zip": query[0],
                     "appid": "25923e26c318157537e1fa24b59a7ae8",
                 ]
             case .historicalAvgs:
                 return [
                     "key": config["WWO_KEY"]!,
-                    "q": query,
+                    "q": query[0],
                     "fx": "no",
                     "cc": "no",
                     "mca": "yes",
@@ -135,12 +135,12 @@ class NetworkManager {
             case .latlong:
                 return [
                     "dataset": "us-zip-code-latitude-and-longitude",
-                    "q": query,
+                    "q": query[0],
                 ]
             }
         }
         
-        func paramsToString(_ query: String="94108") -> String {
+        func paramsToString(_ query: [String]) -> String {
             let parameterArray = getParams(query).map { key, value in
                 return "\(key)=\(value)"
             }
@@ -149,7 +149,7 @@ class NetworkManager {
         }
     }
     
-    private func makeRequest(query: String="94108", for endPoint: EndPoints) -> URLRequest {
+    private func makeRequest(query: [String], for endPoint: EndPoints) -> URLRequest {
         // get the base URL for the API
         let baseURL = endPoint.getBaseURL()
         // grab the parameters from the endpoint and convert them into a string

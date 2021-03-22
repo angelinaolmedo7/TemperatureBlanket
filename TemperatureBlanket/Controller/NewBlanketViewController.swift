@@ -42,7 +42,7 @@ class NewBlanketViewController: UIViewController {
     }
     
     func generateColorBracket()  {
-        networkManager.getAPIresponse(query: self.blanket.zipcode, endpoint: .historicalAvgs) { result in
+        networkManager.getAPIresponse(query: [self.blanket.zipcode], endpoint: .historicalAvgs) { result in
             switch result {
             case let .failure(error):
                 print(error)
@@ -63,7 +63,7 @@ class NewBlanketViewController: UIViewController {
     }
     
     func generateLocationObject() {
-        networkManager.getAPIresponse(query: self.blanket.zipcode, endpoint: .latlong) { result in
+        networkManager.getAPIresponse(query: [self.blanket.zipcode], endpoint: .latlong) { result in
             switch result {
             case let .failure(error):
                 print(error)
