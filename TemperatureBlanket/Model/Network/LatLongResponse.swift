@@ -15,9 +15,9 @@ struct LatLongResponse: Codable {
         struct Field: Codable {
             let city: String
             let zip: String
-            let longitude: Float
+            let longitude: Double
             let state: String
-            let latitude: Float
+            let latitude: Double
         }
     }
 }

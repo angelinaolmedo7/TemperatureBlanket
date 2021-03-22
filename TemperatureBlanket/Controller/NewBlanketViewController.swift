@@ -11,7 +11,7 @@ class NewBlanketViewController: UIViewController {
     
     var networkManager = NetworkManager()
     
-    let blanket = Blanket(zip: "", logs: [], colors: nil)
+    let blanket = Blanket(zip: "", logs: [], colors: nil, location: nil)
 
     @IBOutlet weak var zipTextField: UITextField!
     @IBOutlet weak var palettePickerView: UIPickerView!
@@ -37,6 +37,7 @@ class NewBlanketViewController: UIViewController {
     
     @IBAction func createBlanketPressed(_ sender: Any) {
         self.blanket.zipcode = zipTextField.text ?? "98110" // backup placeholder
+        generateLocationObject()
         generateColorBracket()
     }
     
@@ -56,6 +57,23 @@ class NewBlanketViewController: UIViewController {
                     self.dismiss(animated: true, completion: {
                         self.viewWillAppear(true)
                     })
+                }
+            }
+        }
+    }
+    
+    func generateLocationObject() {
+        networkManager.getAPIresponse(query: self.blanket.zipcode, endpoint: .latlong) { result in
+            switch result {
+            case let .failure(error):
+                print(error)
+            case let .success(loc):
+                DispatchQueue.main.async {
+                    let loc = Location(APIresponse: loc as! LatLongResponse)
+                    print("From zip \(self.blanket.zipcode) generated the following location:")
+                    print("\(loc)")
+                    self.blanket.location = loc
+                    Blanket.saveBlanket(blanket: self.blanket)
                 }
             }
         }

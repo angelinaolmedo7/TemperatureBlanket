@@ -35,7 +35,6 @@ class FirstViewController: UIViewController {
         super.viewWillAppear(animated)
         if let blanket = Blanket.retrieveBlanket() {
             self.blanket = blanket
-            print(self.blanket)
             proceedToBlanket()
         }
         else {

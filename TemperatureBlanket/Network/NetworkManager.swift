@@ -62,8 +62,8 @@ class NetworkManager {
                     return completion(Result.failure(EndPointError.couldNotParse))
                 }
                 result = res
-            case .latlong:
-                guard let res = try? JSONDecoder().decode(WeatherAvgsResponse.self, from: data) else {
+            case .latlong:                
+                guard let res = try? JSONDecoder().decode(LatLongResponse.self, from: data) else {
                     return completion(Result.failure(EndPointError.couldNotParse))
                 }
                 result = res

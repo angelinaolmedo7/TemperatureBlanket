@@ -12,21 +12,24 @@ class Blanket: Codable {
     var zipcode: String
     var logs: [LogItem]
     var colors: WeatherBracket?
+    var location: Location?
     
     private enum CodingKeys: String, CodingKey {
         case zipcode
         case logs
         case colors
+        case location
     }
     
     //MARK: Archiving Paths
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("blanketArchives")
     
-    init(zip: String, logs: [LogItem]=[], colors: WeatherBracket?) {
+    init(zip: String, logs: [LogItem]=[], colors: WeatherBracket?, location: Location?) {
         self.zipcode = zip
         self.logs = logs
         self.colors = colors
+        self.location = location
     }
     
     func encode(to encoder: Encoder) throws {
@@ -34,6 +37,7 @@ class Blanket: Codable {
         try container.encode(zipcode, forKey: .zipcode)
         try container.encode(logs, forKey: .logs)
         try container.encode(colors, forKey: .colors)
+        try container.encode(location, forKey: .location)
     }
     
     required init(from decoder: Decoder) throws {
@@ -41,6 +45,7 @@ class Blanket: Codable {
         self.zipcode = try container.decode(String.self, forKey: .zipcode)
         self.logs = try container.decode([LogItem].self, forKey: .logs)
         self.colors = try container.decode(WeatherBracket?.self, forKey: .colors)
+        self.location = try container.decode(Location?.self, forKey: .location)
     }
     
     // WRITE LOGS

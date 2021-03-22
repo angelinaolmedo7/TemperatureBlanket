@@ -6,18 +6,30 @@
 //
 
 import Foundation
-struct Location: Decodable {
+struct Location: Codable {
     var zip: String
     var city: String
     var state: String
-    var lon: Float
-    var lat: Float
+    var long: Double
+    var lat: Double
     
-    init(zip: String, city: String, state: String, lon: Float, lat: Float) {
+    var description: String {
+        return "\(city), \(state) \(zip) (\(lat), \(long))"
+    }
+    
+    init(zip: String, city: String, state: String, long: Double, lat: Double) {
         self.zip = zip
         self.city = city
         self.state = state
-        self.lon = lon
+        self.long = long
         self.lat = lat
+    }
+    
+    init(APIresponse: LatLongResponse) {
+        self.init(zip: APIresponse.records[0].fields.zip,
+                  city: APIresponse.records[0].fields.city,
+                  state: APIresponse.records[0].fields.state,
+                  long: APIresponse.records[0].fields.longitude,
+                  lat: APIresponse.records[0].fields.latitude)
     }
 }
