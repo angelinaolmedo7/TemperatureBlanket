@@ -7,8 +7,8 @@ class NetworkManager {
 
     var token = ""
     
-    func getWeather(_ completion: @escaping (Result<WeatherResponse>) -> Void) {
-        let postsRequest = makeRequest(for: .weather)
+    func getWeather(zip: String="94108", _ completion: @escaping (Result<WeatherResponse>) -> Void) {
+        let postsRequest = makeRequest(zip: zip, for: .weather)
         let task = urlSession.dataTask(with: postsRequest) { data, response, error in
             // Check for errors.
             if let error = error {
@@ -33,8 +33,8 @@ class NetworkManager {
         task.resume()
     }
     
-    func getAvgWeather(_ completion: @escaping (Result<WeatherAvgsResponse>) -> Void) {
-        let postsRequest = makeRequest(for: .historicalAvgs)
+    func getAvgWeather(zip: String="94108", _ completion: @escaping (Result<WeatherAvgsResponse>) -> Void) {
+        let postsRequest = makeRequest(zip: zip, for: .historicalAvgs)
         
         let task = urlSession.dataTask(with: postsRequest) { data, response, error in
             // Check for errors.
@@ -45,14 +45,6 @@ class NetworkManager {
             // Check to see if there is any data that was retrieved.
             guard let data = data else {
                 return completion(Result.failure(EndPointError.noData))
-            }
-            
-            do {
-                //Decode retrived data with JSONDecoder and assing type of Station object
-                let stationData = try JSONDecoder().decode(WeatherAvgsResponse.self, from: data)
-            }
-            catch let error {
-                print(error)
             }
                     
             // Attempt to decode the data.
@@ -101,17 +93,17 @@ class NetworkManager {
             ]
         }
         
-        func getParams() -> [String: String] {
+        func getParams(_ zip: String="94108") -> [String: String] {
             switch self {
             case .weather:
                 return [
-                    "zip": "94108",  // TODO: REMOVE PLACEHOLDER
+                    "zip": zip,
                     "appid": "25923e26c318157537e1fa24b59a7ae8"
                 ]
             case .historicalAvgs:
                 return [
                     "key": config["WWO_KEY"]!,
-                    "q": "94108",  // TODO: REMOVE PLACEHOLDER
+                    "q": zip,
                     "fx": "no",
                     "cc": "no",
                     "mca": "yes",
@@ -121,8 +113,8 @@ class NetworkManager {
             }
         }
         
-        func paramsToString() -> String {
-            let parameterArray = getParams().map { key, value in
+        func paramsToString(_ zip: String="94108") -> String {
+            let parameterArray = getParams(zip).map { key, value in
                 return "\(key)=\(value)"
             }
 
@@ -130,11 +122,11 @@ class NetworkManager {
         }
     }
     
-    private func makeRequest(for endPoint: EndPoints) -> URLRequest {
+    private func makeRequest(zip: String="94108", for endPoint: EndPoints) -> URLRequest {
         // get the base URL for the API
         let baseURL = endPoint.getBaseURL()
         // grab the parameters from the endpoint and convert them into a string
-        let stringParams = endPoint.paramsToString()
+        let stringParams = endPoint.paramsToString(zip)
         // get the path of the endpoint
         let path = endPoint.getPath()
         // create the full url from the above variables

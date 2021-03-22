@@ -11,8 +11,9 @@ class NewBlanketViewController: UIViewController {
     
     var networkManager = NetworkManager()
     
-    let blanket = Blanket(logs: [], colors: nil)
+    let blanket = Blanket(zip: "", logs: [], colors: nil)
 
+    @IBOutlet weak var zipTextField: UITextField!
     @IBOutlet weak var palettePickerView: UIPickerView!
     @IBOutlet weak var paletteDisplayStackView: UIStackView!
     
@@ -35,11 +36,12 @@ class NewBlanketViewController: UIViewController {
     }
     
     @IBAction func createBlanketPressed(_ sender: Any) {
+        self.blanket.zipcode = zipTextField.text ?? "98110" // backup placeholder
         generateColorBracket()
     }
     
     func generateColorBracket()  {
-        networkManager.getAvgWeather() { result in
+        networkManager.getAvgWeather(zip: self.blanket.zipcode) { result in
             switch result {
             case let .failure(error):
                 print(error)

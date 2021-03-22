@@ -9,10 +9,12 @@ import Foundation
 
 class Blanket: Codable {
     
+    var zipcode: String
     var logs: [LogItem]
     var colors: WeatherBracket?
     
     private enum CodingKeys: String, CodingKey {
+        case zipcode
         case logs
         case colors
     }
@@ -21,19 +23,22 @@ class Blanket: Codable {
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("blanketArchives")
     
-    init(logs: [LogItem]=[], colors: WeatherBracket?) {
+    init(zip: String, logs: [LogItem]=[], colors: WeatherBracket?) {
+        self.zipcode = zip
         self.logs = logs
         self.colors = colors
     }
     
     func encode(to encoder: Encoder) throws {
-      var container = encoder.container(keyedBy: CodingKeys.self)
-      try container.encode(logs, forKey: .logs)
-      try container.encode(colors, forKey: .colors)
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(zipcode, forKey: .zipcode)
+        try container.encode(logs, forKey: .logs)
+        try container.encode(colors, forKey: .colors)
     }
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.zipcode = try container.decode(String.self, forKey: .zipcode)
         self.logs = try container.decode([LogItem].self, forKey: .logs)
         self.colors = try container.decode(WeatherBracket?.self, forKey: .colors)
     }
