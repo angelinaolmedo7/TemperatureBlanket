@@ -143,7 +143,7 @@ class NetworkManager {
             case .weather:
                 return [
                     "zip": query[0],
-                    "appid": "25923e26c318157537e1fa24b59a7ae8",
+                    "appid": config["OWM_KEY"]!,
                 ]
             case .historicalAvgs:
                 return [

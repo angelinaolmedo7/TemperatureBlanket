@@ -27,6 +27,8 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         self.weekPicker.delegate = self
         self.weekPicker.dataSource = self
+        
+        self.weekPicker.selectRow(activeWeek, inComponent: 0, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

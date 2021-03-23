@@ -8,13 +8,14 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    
+    var networkManager = NetworkManager()
+    var blanket: Blanket!
 
     @IBOutlet weak var yesterdayWeatherLabel: UILabel!
     @IBOutlet weak var yesterdayWeatherColorView: UIView!
     @IBOutlet weak var todayWeatherColorView: UIView!
     @IBOutlet weak var todayWeatherLabel: UILabel!
-    
-    var blanket: Blanket!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +30,21 @@ class HomeViewController: UIViewController {
         let yesterday = blanket.logs.dayFromInd(ind: blanket.logs.indexOfLastDay() ?? (0,0))
         let yesterdayColor = blanket.colors!.getColor(temp: yesterday!.temp)
         self.yesterdayWeatherColorView.backgroundColor = yesterdayColor
-        self.yesterdayWeatherLabel.text = "Yesterday's Avg. Temp.: \(yesterday!.temp)°F"
+        self.yesterdayWeatherLabel.text = "Yesterday's Avg. Temperature: \(yesterday!.temp)°F"
         
-        
+        networkManager.getAPIresponse(query: [blanket.zipcode], endpoint: .weather) { result in
+            switch result {
+            case let .failure(error):
+                print(error)
+            case let .success(weather):
+                DispatchQueue.main.async {
+                    let tempK = (weather as! WeatherResponse).main!.temp!
+                    let temp = Int(Main.kelvinToF(kel: tempK))
+                    self.todayWeatherLabel.text = "Current Temperature: \(temp)°F*"
+                    self.todayWeatherColorView.backgroundColor = self.blanket.colors!.getColor(temp: temp)
+                }
+            }
+        }
     }
 
     /*
