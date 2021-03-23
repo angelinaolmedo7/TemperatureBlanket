@@ -583,7 +583,7 @@ dataset via OpenDataSoft API</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wG3-N5-jzI">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wG3-N5-jzI">
                                 <rect key="frame" x="150" y="778" width="116" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="placeholder-new"/>
@@ -591,14 +591,13 @@ dataset via OpenDataSoft API</string>
                                     <segue destination="55t-FT-ZFL" kind="presentation" identifier="newBlanket" modalPresentationStyle="fullScreen" id="Ni9-va-ZF1"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading your project..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wtE-ma-VBk">
-                                <rect key="frame" x="121" y="438" width="171" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading your project..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wtE-ma-VBk">
+                                <rect key="frame" x="121.5" y="442.5" width="171" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bc-cV-Yec">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bc-cV-Yec">
                                 <rect key="frame" x="47" y="778" width="81" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="placeholder"/>
@@ -609,6 +608,10 @@ dataset via OpenDataSoft API</string>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="shH-IU-Ysm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="wtE-ma-VBk" firstAttribute="centerY" secondItem="shH-IU-Ysm" secondAttribute="centerY" id="6Ad-2r-Yr7"/>
+                            <constraint firstItem="wtE-ma-VBk" firstAttribute="centerX" secondItem="shH-IU-Ysm" secondAttribute="centerX" id="7GM-2H-Wcs"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HKJ-bk-7qI"/>
                 </viewController>
