@@ -14,7 +14,9 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var yesterdayWeatherLabel: UILabel!
     @IBOutlet weak var yesterdayWeatherColorView: UIView!
+    @IBOutlet weak var yesterdayDateLabel: UILabel!
     @IBOutlet weak var todayWeatherColorView: UIView!
+    @IBOutlet weak var todayDateLabel: UILabel!
     @IBOutlet weak var todayWeatherLabel: UILabel!
     
     override func viewDidLoad() {
@@ -27,10 +29,15 @@ class HomeViewController: UIViewController {
     }
     
     func setColorsAndLabels() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/YY"
+        
         let yesterday = blanket.logs.dayFromInd(ind: blanket.logs.indexOfLastDay() ?? (0,0))
         let yesterdayColor = blanket.colors!.getColor(temp: yesterday!.temp)
         self.yesterdayWeatherColorView.backgroundColor = yesterdayColor
         self.yesterdayWeatherLabel.text = "Yesterday's Avg. Temperature: \(yesterday!.temp)°F"
+        self.yesterdayDateLabel.text = formatter.string(from: yesterday!.date)
+        self.todayDateLabel.text = formatter.string(from: Date())
         
         networkManager.getAPIresponse(query: [blanket.zipcode], endpoint: .weather) { result in
             switch result {
