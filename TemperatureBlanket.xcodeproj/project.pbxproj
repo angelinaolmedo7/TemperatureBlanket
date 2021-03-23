@@ -36,6 +36,7 @@
 		29E2AE8E2609AF5900756342 /* WeekTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE8C2609AF5900756342 /* WeekTableViewCell.swift */; };
 		29E2AE8F2609AF5900756342 /* WeekTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29E2AE8D2609AF5900756342 /* WeekTableViewCell.xib */; };
 		29E2AE97260A0B5500756342 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE96260A0B5400756342 /* HomeViewController.swift */; };
+		29E2AE9C260A463F00756342 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE9B260A463F00756342 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		29E2AE8C2609AF5900756342 /* WeekTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTableViewCell.swift; sourceTree = "<group>"; };
 		29E2AE8D2609AF5900756342 /* WeekTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeekTableViewCell.xib; sourceTree = "<group>"; };
 		29E2AE96260A0B5400756342 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		29E2AE9B260A463F00756342 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +216,7 @@
 				29E2AE262606E90800756342 /* NewBlanketViewController.swift */,
 				29E2AE872609AEE500756342 /* WeekViewController.swift */,
 				29E2AE96260A0B5400756342 /* HomeViewController.swift */,
+				29E2AE9B260A463F00756342 /* SettingsViewController.swift */,
 				29E2AE8C2609AF5900756342 /* WeekTableViewCell.swift */,
 				29E2AE8D2609AF5900756342 /* WeekTableViewCell.xib */,
 				29E2AE5726095CE200756342 /* CalendarViewController.swift */,
@@ -370,6 +373,7 @@
 				29E2AE882609AEE500756342 /* WeekViewController.swift in Sources */,
 				29E2AE6C260967C700756342 /* CalendarCollectionViewCell.swift in Sources */,
 				29E2AE172606CA0B00756342 /* FirstViewController.swift in Sources */,
+				29E2AE9C260A463F00756342 /* SettingsViewController.swift in Sources */,
 				29E2AE02260313B300756342 /* CreateSessionResponse.swift in Sources */,
 				29E2AE12260474DF00756342 /* Blanket.swift in Sources */,
 				29E2AE2F2607251800756342 /* config.swift in Sources */,
