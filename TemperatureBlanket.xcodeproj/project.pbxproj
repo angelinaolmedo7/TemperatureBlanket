@@ -35,6 +35,7 @@
 		29E2AE882609AEE500756342 /* WeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE872609AEE500756342 /* WeekViewController.swift */; };
 		29E2AE8E2609AF5900756342 /* WeekTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE8C2609AF5900756342 /* WeekTableViewCell.swift */; };
 		29E2AE8F2609AF5900756342 /* WeekTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29E2AE8D2609AF5900756342 /* WeekTableViewCell.xib */; };
+		29E2AE97260A0B5500756342 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE96260A0B5400756342 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		29E2AE872609AEE500756342 /* WeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekViewController.swift; sourceTree = "<group>"; };
 		29E2AE8C2609AF5900756342 /* WeekTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTableViewCell.swift; sourceTree = "<group>"; };
 		29E2AE8D2609AF5900756342 /* WeekTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeekTableViewCell.xib; sourceTree = "<group>"; };
+		29E2AE96260A0B5400756342 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +213,7 @@
 				29E2AE162606CA0B00756342 /* FirstViewController.swift */,
 				29E2AE262606E90800756342 /* NewBlanketViewController.swift */,
 				29E2AE872609AEE500756342 /* WeekViewController.swift */,
+				29E2AE96260A0B5400756342 /* HomeViewController.swift */,
 				29E2AE8C2609AF5900756342 /* WeekTableViewCell.swift */,
 				29E2AE8D2609AF5900756342 /* WeekTableViewCell.xib */,
 				29E2AE5726095CE200756342 /* CalendarViewController.swift */,
@@ -359,6 +362,7 @@
 				29E2ADC82600889700756342 /* ViewController.swift in Sources */,
 				29E2AE0D260474C500756342 /* WeatherBracket.swift in Sources */,
 				29E2AE5826095CE200756342 /* CalendarViewController.swift in Sources */,
+				29E2AE97260A0B5500756342 /* HomeViewController.swift in Sources */,
 				29E2AE272606E90800756342 /* NewBlanketViewController.swift in Sources */,
 				29E2AE342607413900756342 /* WeatherAvgsResponse.swift in Sources */,
 				29E2AE04260313B300756342 /* LogItem.swift in Sources */,

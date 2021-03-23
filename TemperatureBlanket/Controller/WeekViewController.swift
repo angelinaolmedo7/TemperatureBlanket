@@ -10,6 +10,7 @@ import UIKit
 class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var blanket: Blanket!
+    var activeWeek: Int!
 
     @IBOutlet weak var weekViewController: UITableView!
     
@@ -17,6 +18,7 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         
         self.blanket = Blanket.retrieveBlanket()! // you shouldn't be able to get to this screen without a blanket
+        self.activeWeek = (blanket.logs.indexOfLastDay() ?? (0,0)).0
 
         // Do any additional setup after loading the view.
         self.weekViewController.delegate = self
@@ -25,16 +27,19 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of feed items
-        return 7
-        }
+        return self.blanket.logs.weeks[self.activeWeek].days.count
+    }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Retrieve cell
         let cellIdentifier: String = "WeekCell"
         let myCell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)!
         
-        // Get references to labels of cell
-        myCell.textLabel!.text = "hh"
+        // Get the day object for the cell
+        let day = self.blanket.logs.dayFromInd(ind: (self.activeWeek, indexPath.row))!
+        
+        myCell.textLabel!.text = "\(day.temp)"
+        myCell.backgroundColor = blanket.colors?.getColor(temp: day.temp)
             
         return myCell
     }

@@ -55,6 +55,15 @@ struct WeatherBracket: Codable {
         return colorArray
     }
     
+    func getColor(temp: Int) -> UIColor? {
+        for color in self.colorBrackets {
+            if color.isInRange(num: temp) {
+                return color.getUIColor()
+            }
+        }
+        return nil
+    }
+    
 }
 
 struct ColorRange: Codable {
@@ -70,6 +79,10 @@ struct ColorRange: Codable {
     
     func isInRange(num: Int) -> Bool {
         return (minTemp ?? -100 < num) && (num < maxTemp ?? 200)
+    }
+    
+    func getUIColor() -> UIColor? {
+        return UIColor(hex: self.hex)
     }
 }
 
