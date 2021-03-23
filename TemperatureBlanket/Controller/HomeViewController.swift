@@ -47,7 +47,7 @@ class HomeViewController: UIViewController {
                 DispatchQueue.main.async {
                     let tempK = (weather as! WeatherResponse).main!.temp!
                     let temp = Int(Main.kelvinToF(kel: tempK))
-                    self.todayWeatherLabel.text = "Current Temperature: \(temp)°F*"
+                    self.todayWeatherLabel.text = "Current Temperature*: \(temp)°F"
                     self.todayWeatherColorView.backgroundColor = self.blanket.colors!.getColor(temp: temp)
                 }
             }
