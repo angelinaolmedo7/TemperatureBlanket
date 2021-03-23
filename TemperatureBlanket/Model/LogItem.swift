@@ -22,7 +22,7 @@ class LogItem: Codable {
     init(weather: WeatherResponse) {
         self.date = NSDate.now.description(with: Locale(identifier: "en_US"))
         
-        let fTemp = Double(round(100*(Main.kelvinToF(kel: (weather.main?.temp)!)))/100) // round to 2 decimal places
+        let fTemp = Double(round(100*(WeatherResponse.kelvinToF(kel: (weather.main?.temp)!)))/100) // round to 2 decimal places
         let desc = weather.weather[0]?.main
         self.weatherString = "\(fTemp)°F, \(desc ?? "ERROR")"
     }

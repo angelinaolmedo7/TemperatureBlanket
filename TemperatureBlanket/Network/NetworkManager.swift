@@ -84,9 +84,7 @@ class NetworkManager {
         }
         task.resume()
     }
-    
-    // https://dark-sky.p.rapidapi.com/37.774929,-122.419418,2021-03-20T02:00:00
-    
+        
     enum EndPoints {
         case weather
         case historicalAvgs
