@@ -64,6 +64,10 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
         Blanket.saveBlanket(blanket: self.blanket)
         self.weekViewController.reloadRows(at: [indexPath], with: .left)
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.bounds.height/7
+    }
 
     /*
     // MARK: - Navigation
