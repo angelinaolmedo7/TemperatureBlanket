@@ -21,8 +21,6 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.blanket = Blanket.retrieveBlanket()! // you shouldn't be able to get to this screen without a blanket
         self.activeWeek = (blanket.logs.indexOfLastDay() ?? (0,0)).0
         
-        print("\(blanket.colors?.colorBrackets)")
-
         // Do any additional setup after loading the view.
         self.weekViewController.delegate = self
         self.weekViewController.dataSource = self
@@ -44,8 +42,15 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Get the day object for the cell
         let day = self.blanket.logs.dayFromInd(ind: (self.activeWeek, indexPath.row))!
         
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/YY"
         
-        myCell.textLabel!.text = "\(day.temp)"
+        var comp = "COMPLETE"
+        if !day.complete {
+            comp = "IN\(comp)"
+        }
+        
+        myCell.textLabel!.text = "\(formatter.string(from: day.date)) | \(day.temp)°F | \(comp)"
         myCell.backgroundColor = blanket.colors?.getColor(temp: day.temp)
             
         return myCell
@@ -54,6 +59,8 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // toggle completed
         self.blanket.logs.dayFromInd(ind: (activeWeek, indexPath.row))!.toggleCompleted()
+        Blanket.saveBlanket(blanket: self.blanket)
+        self.weekViewController.reloadRows(at: [indexPath], with: .left)
     }
 
     /*
@@ -81,7 +88,7 @@ extension WeekViewController: UIPickerViewDelegate, UIPickerViewDataSource {
        
     // The number of rows of data
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.blanket.logs.indexOfLastDay()!.0
+        return self.blanket.logs.indexOfLastDay()!.0 + 1
     }
        
     // The data to return for the row and component (column) that's being passed in
