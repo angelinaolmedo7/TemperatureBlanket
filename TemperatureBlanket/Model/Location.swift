@@ -17,6 +17,12 @@ struct Location: Codable {
         return "\(city), \(state) \(zip) (\(lat), \(long))"
     }
     
+    func darkSkysCall(date: Date) -> [String] {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        return ["\(lat)", "\(long)", formatter.string(from: date)]
+    }
+    
     init(zip: String, city: String, state: String, long: Double, lat: Double) {
         self.zip = zip
         self.city = city

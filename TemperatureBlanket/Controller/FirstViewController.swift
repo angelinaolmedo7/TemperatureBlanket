@@ -11,10 +11,15 @@ class FirstViewController: UIViewController {
     
     var networkManager = NetworkManager()
     var blanket: Blanket? = nil
+    
+    let cal: Calendar = Calendar(identifier: .gregorian)
+    let formatter = DateFormatter()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        Blanket.clearBlanket()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+//        Blanket.clearBlanket()  // for debug purposes
 
         // Do any additional setup after loading the view.
     }
@@ -35,11 +40,58 @@ class FirstViewController: UIViewController {
         super.viewWillAppear(animated)
         if let blanket = Blanket.retrieveBlanket() {
             self.blanket = blanket
-            proceedToBlanket()
+            self.catchUpLogsAndProceed()
         }
         else {
             proceedToNewBlanket()
         }
+    }
+    
+    // this should maybe be moved?
+    func catchUpLogsAndProceed() {
+        let year = self.blanket!.logs
+        if year.isCaughtUp(cal: cal) {
+            print("The records are caught up.")
+            // we can save the blanket (redundant?) and move forward
+            Blanket.saveBlanket(blanket: self.blanket)
+            proceedToBlanket()
+        }
+        else {
+            print("-----------Attempting to catch up-----------")
+            // get the index for the last day recorded
+            let lastDay = year.indexOfLastDay()
+            // if nil, the calendar is empty. start it at jan 1
+            let day: Date
+            if lastDay == nil {
+                day = formatter.date(from: "2021-01-01T01:00:00")!
+            }
+            else {
+                let previousDay = year.dayFromInd(ind: lastDay!)!.date
+                day = Calendar.current.date(byAdding: .day, value: 1, to: previousDay)!
+            }
+            
+            let q = self.blanket!.location!.darkSkysCall(date: day)
+            
+            networkManager.getAPIresponse(query: q, endpoint: .dayInTime) { result in
+                switch result {
+                case let .failure(error):
+                    print(error)
+                case let .success(dayInTime):
+                    DispatchQueue.main.async {
+//                        print("From zip \(self.blanket!.zipcode) generated the following temp:")
+//                        print("\(dayInTime)")
+                        
+                        // find a better way to do this
+                        let ind = self.blanket!.logs.indexOfEmpty()
+                        self.blanket!.logs.addDay(week: ind!.0, date: day, api: dayInTime as! DayInTimeResponse)
+                        
+                        // recursively call until full
+                        self.catchUpLogsAndProceed()
+                    }
+                }
+            }
+        }
+        
     }
     
 //    func fetchWeather() {

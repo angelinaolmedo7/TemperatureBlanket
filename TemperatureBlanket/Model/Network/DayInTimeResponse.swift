@@ -20,4 +20,8 @@ struct DayInTimeResponse: Codable {
             case hours = "data"
         }
     }
+    
+    enum CodingKeys: String, CodingKey {
+        case hourly = "hourly"
+    }
 }

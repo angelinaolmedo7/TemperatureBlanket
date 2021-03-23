@@ -8,11 +8,15 @@
 import UIKit
 
 class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    var blanket: Blanket!
 
     @IBOutlet weak var weekViewController: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.blanket = Blanket.retrieveBlanket()! // you shouldn't be able to get to this screen without a blanket
 
         // Do any additional setup after loading the view.
         self.weekViewController.delegate = self

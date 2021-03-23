@@ -68,7 +68,10 @@ class NetworkManager {
                 }
                 result = res
             case .dayInTime:
+                try! JSONDecoder().decode(DayInTimeResponse.self, from: data)  // for debugging, crash is helpful
+                
                 guard let res = try? JSONDecoder().decode(DayInTimeResponse.self, from: data) else {
+                    print(String(data: data, encoding: .utf8)!)
                     return completion(Result.failure(EndPointError.couldNotParse))
                 }
                 result = res
@@ -159,9 +162,7 @@ class NetworkManager {
                 ]
             case .dayInTime:
                 return [
-                    "latitude":"\(query[0])",
-                    "longitude":"\(query[1])",
-                    "time":"\(query[2])T00:00:01",
+                    "q":"\(query[0]),\(query[1]),\(query[2])",  // need to be in this order
                 ]
             }
         }
@@ -176,7 +177,7 @@ class NetworkManager {
                 return parameterArray.joined(separator: "&")
             case .dayInTime:
                 let parameterArray = getParams(query).map { key, value in
-                    return "value"
+                    return "\(value)"
                 }
                 return parameterArray.joined(separator: ",")
             }
@@ -190,8 +191,18 @@ class NetworkManager {
         let stringParams = endPoint.paramsToString(query)
         // get the path of the endpoint
         let path = endPoint.getPath()
+        
         // create the full url from the above variables
-        let fullURL = URL(string: baseURL.appending("\(path)?\(stringParams)"))!
+        var fullURL = URL(string: baseURL.appending("\(path)?\(stringParams)"))!
+        
+        switch endPoint {
+        case .weather, .historicalAvgs, .latlong:
+            break
+        case .dayInTime:
+            // create the full url from the above variables but for dark sky
+            fullURL = URL(string: baseURL.appending("\(path)\(stringParams)"))!
+        }
+        
         // build the request
         print(fullURL)
         var request = URLRequest(url: fullURL)

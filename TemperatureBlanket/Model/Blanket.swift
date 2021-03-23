@@ -10,7 +10,7 @@ import Foundation
 class Blanket: Codable {
     
     var zipcode: String
-    var logs: [LogItem]
+    var logs: Year
     var colors: WeatherBracket?
     var location: Location?
     
@@ -25,9 +25,9 @@ class Blanket: Codable {
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("blanketArchives")
     
-    init(zip: String, logs: [LogItem]=[], colors: WeatherBracket?, location: Location?) {
+    init(zip: String, logs: Year?, colors: WeatherBracket?, location: Location?) {
         self.zipcode = zip
-        self.logs = logs
+        self.logs = logs ?? Year()
         self.colors = colors
         self.location = location
     }
@@ -43,7 +43,7 @@ class Blanket: Codable {
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.zipcode = try container.decode(String.self, forKey: .zipcode)
-        self.logs = try container.decode([LogItem].self, forKey: .logs)
+        self.logs = try container.decode(Year.self, forKey: .logs)
         self.colors = try container.decode(WeatherBracket?.self, forKey: .colors)
         self.location = try container.decode(Location?.self, forKey: .location)
     }
