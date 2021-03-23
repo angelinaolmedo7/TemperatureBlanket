@@ -28,6 +28,13 @@
 		29E2AE392607637600756342 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE382607637600756342 /* UIColorExtensions.swift */; };
 		29E2AE3E26090F2300756342 /* LatLongResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE3D26090F2300756342 /* LatLongResponse.swift */; };
 		29E2AE432609206D00756342 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE422609206D00756342 /* Location.swift */; };
+		29E2AE4B260932BD00756342 /* DayInTimeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE4A260932BD00756342 /* DayInTimeResponse.swift */; };
+		29E2AE5826095CE200756342 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE5726095CE200756342 /* CalendarViewController.swift */; };
+		29E2AE6C260967C700756342 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE6A260967C700756342 /* CalendarCollectionViewCell.swift */; };
+		29E2AE6D260967C700756342 /* CalendarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29E2AE6B260967C700756342 /* CalendarCollectionViewCell.xib */; };
+		29E2AE882609AEE500756342 /* WeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE872609AEE500756342 /* WeekViewController.swift */; };
+		29E2AE8E2609AF5900756342 /* WeekTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E2AE8C2609AF5900756342 /* WeekTableViewCell.swift */; };
+		29E2AE8F2609AF5900756342 /* WeekTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29E2AE8D2609AF5900756342 /* WeekTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +82,13 @@
 		29E2AE382607637600756342 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		29E2AE3D26090F2300756342 /* LatLongResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatLongResponse.swift; sourceTree = "<group>"; };
 		29E2AE422609206D00756342 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		29E2AE4A260932BD00756342 /* DayInTimeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayInTimeResponse.swift; sourceTree = "<group>"; };
+		29E2AE5726095CE200756342 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		29E2AE6A260967C700756342 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
+		29E2AE6B260967C700756342 /* CalendarCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarCollectionViewCell.xib; sourceTree = "<group>"; };
+		29E2AE872609AEE500756342 /* WeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekViewController.swift; sourceTree = "<group>"; };
+		29E2AE8C2609AF5900756342 /* WeekTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTableViewCell.swift; sourceTree = "<group>"; };
+		29E2AE8D2609AF5900756342 /* WeekTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeekTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +200,7 @@
 				29E2AE00260313B300756342 /* WeatherResponse.swift */,
 				29E2AE332607413900756342 /* WeatherAvgsResponse.swift */,
 				29E2AE3D26090F2300756342 /* LatLongResponse.swift */,
+				29E2AE4A260932BD00756342 /* DayInTimeResponse.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -195,6 +210,12 @@
 			children = (
 				29E2AE162606CA0B00756342 /* FirstViewController.swift */,
 				29E2AE262606E90800756342 /* NewBlanketViewController.swift */,
+				29E2AE872609AEE500756342 /* WeekViewController.swift */,
+				29E2AE8C2609AF5900756342 /* WeekTableViewCell.swift */,
+				29E2AE8D2609AF5900756342 /* WeekTableViewCell.xib */,
+				29E2AE5726095CE200756342 /* CalendarViewController.swift */,
+				29E2AE6A260967C700756342 /* CalendarCollectionViewCell.swift */,
+				29E2AE6B260967C700756342 /* CalendarCollectionViewCell.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -302,7 +323,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29E2AE6D260967C700756342 /* CalendarCollectionViewCell.xib in Resources */,
 				29E2ADD02600889A00756342 /* LaunchScreen.storyboard in Resources */,
+				29E2AE8F2609AF5900756342 /* WeekTableViewCell.xib in Resources */,
 				29E2ADCD2600889A00756342 /* Assets.xcassets in Resources */,
 				29E2ADCB2600889700756342 /* Main.storyboard in Resources */,
 			);
@@ -335,14 +358,19 @@
 				29E2AE03260313B300756342 /* WeatherResponse.swift in Sources */,
 				29E2ADC82600889700756342 /* ViewController.swift in Sources */,
 				29E2AE0D260474C500756342 /* WeatherBracket.swift in Sources */,
+				29E2AE5826095CE200756342 /* CalendarViewController.swift in Sources */,
 				29E2AE272606E90800756342 /* NewBlanketViewController.swift in Sources */,
 				29E2AE342607413900756342 /* WeatherAvgsResponse.swift in Sources */,
 				29E2AE04260313B300756342 /* LogItem.swift in Sources */,
+				29E2AE8E2609AF5900756342 /* WeekTableViewCell.swift in Sources */,
+				29E2AE882609AEE500756342 /* WeekViewController.swift in Sources */,
+				29E2AE6C260967C700756342 /* CalendarCollectionViewCell.swift in Sources */,
 				29E2AE172606CA0B00756342 /* FirstViewController.swift in Sources */,
 				29E2AE02260313B300756342 /* CreateSessionResponse.swift in Sources */,
 				29E2AE12260474DF00756342 /* Blanket.swift in Sources */,
 				29E2AE2F2607251800756342 /* config.swift in Sources */,
 				29E2ADC42600889700756342 /* AppDelegate.swift in Sources */,
+				29E2AE4B260932BD00756342 /* DayInTimeResponse.swift in Sources */,
 				29E2ADC62600889700756342 /* SceneDelegate.swift in Sources */,
 				29E2AE3E26090F2300756342 /* LatLongResponse.swift in Sources */,
 			);

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fK9-lJ-yAh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1VL-LP-9xM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -128,7 +129,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UBo-iT-hsf" userLabel="PaletteSelection">
-                                                <rect key="frame" x="165.5" y="0.0" width="228.5" height="122.5"/>
+                                                <rect key="frame" x="165" y="0.0" width="229" height="122"/>
                                             </pickerView>
                                         </subviews>
                                     </stackView>
@@ -211,6 +212,46 @@
             </objects>
             <point key="canvasLocation" x="-826" y="856"/>
         </scene>
+        <!--Week View Controller-->
+        <scene sceneID="2vh-eP-JyJ">
+            <objects>
+                <viewController id="1VL-LP-9xM" customClass="WeekViewController" customModule="TemperatureBlanket" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h5Z-Lg-txv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="D9c-97-nEg">
+                                <rect key="frame" x="10" y="64" width="394" height="778"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeekCell" id="DXj-b9-0wn">
+                                        <rect key="frame" x="0.0" y="28" width="394" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DXj-b9-0wn" id="BdD-D1-hzH">
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="EbT-SX-MtL"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="D9c-97-nEg" firstAttribute="top" secondItem="EbT-SX-MtL" secondAttribute="top" constant="20" id="3zU-GK-hsT"/>
+                            <constraint firstItem="EbT-SX-MtL" firstAttribute="bottom" secondItem="D9c-97-nEg" secondAttribute="bottom" constant="20" id="TXJ-Ty-Imt"/>
+                            <constraint firstItem="D9c-97-nEg" firstAttribute="leading" secondItem="EbT-SX-MtL" secondAttribute="leading" constant="10" id="VOQ-qe-kv5"/>
+                            <constraint firstItem="EbT-SX-MtL" firstAttribute="trailing" secondItem="D9c-97-nEg" secondAttribute="trailing" constant="10" id="XOU-g0-v8J"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="weekViewController" destination="D9c-97-nEg" id="I7f-Fj-W3Q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vQ5-WO-crW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="96" y="856"/>
+        </scene>
         <!--Home-->
         <scene sceneID="rG8-Ca-qJq">
             <objects>
@@ -230,17 +271,57 @@
             </objects>
             <point key="canvasLocation" x="1006" y="94"/>
         </scene>
-        <!--View Controller-->
+        <!--Calendar View Controller-->
         <scene sceneID="pYB-oG-ees">
             <objects>
-                <viewController id="HbZ-ys-GNd" customClass="ViewController" customModule="TemperatureBlanket" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="HbZ-ys-GNd" customClass="CalendarViewController" customModule="TemperatureBlanket" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="E10-8U-eh0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xxm-hv-R9n">
+                                <rect key="frame" x="10" y="108" width="394" height="685"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YQv-ap-jbb">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="calendarCell" id="EMI-AO-l6i" customClass="CalendarCollectionViewCell" customModule="TemperatureBlanket" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="K80-fc-Gnn">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kWo-ra-nzG">
+                                                    <rect key="frame" x="27" y="66" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="I8e-ZQ-5gy"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="xxm-hv-R9n" firstAttribute="top" secondItem="I8e-ZQ-5gy" secondAttribute="top" constant="20" id="89d-8W-ERp"/>
+                            <constraint firstItem="I8e-ZQ-5gy" firstAttribute="bottom" secondItem="xxm-hv-R9n" secondAttribute="bottom" constant="20" id="EvS-h6-HpE"/>
+                            <constraint firstItem="I8e-ZQ-5gy" firstAttribute="trailing" secondItem="xxm-hv-R9n" secondAttribute="trailing" constant="10" id="KfS-FD-6es"/>
+                            <constraint firstItem="xxm-hv-R9n" firstAttribute="leading" secondItem="I8e-ZQ-5gy" secondAttribute="leading" constant="10" id="iT4-40-sfj"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="e6V-bs-7Rw"/>
+                    <connections>
+                        <outlet property="calendarCollectionView" destination="xxm-hv-R9n" id="C38-3u-246"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R2f-of-Wid" sceneMemberID="firstResponder"/>
             </objects>

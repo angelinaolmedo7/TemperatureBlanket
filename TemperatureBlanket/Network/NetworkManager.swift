@@ -67,6 +67,11 @@ class NetworkManager {
                     return completion(Result.failure(EndPointError.couldNotParse))
                 }
                 result = res
+            case .dayInTime:
+                guard let res = try? JSONDecoder().decode(DayInTimeResponse.self, from: data) else {
+                    return completion(Result.failure(EndPointError.couldNotParse))
+                }
+                result = res
             }
         
             // Return the result with the completion handler.
@@ -77,10 +82,13 @@ class NetworkManager {
         task.resume()
     }
     
+    // https://dark-sky.p.rapidapi.com/37.774929,-122.419418,2021-03-20T02:00:00
+    
     enum EndPoints {
         case weather
         case historicalAvgs
         case latlong
+        case dayInTime
         
         func getBaseURL() -> String {
             switch self {
@@ -90,6 +98,8 @@ class NetworkManager {
                 return "https://api.worldweatheronline.com/premium/v1/"
             case .latlong:
                 return "https://public.opendatasoft.com/api/records/1.0/"
+            case .dayInTime:
+                return "https://dark-sky.p.rapidapi.com/"
             }
         }
         
@@ -101,6 +111,8 @@ class NetworkManager {
                 return "weather.ashx"
             case .latlong:
                 return "search"
+            case .dayInTime:
+                return ""
             }
         }
         
@@ -109,10 +121,18 @@ class NetworkManager {
         }
         
         func getHeaders(token: String) -> [String: String] {
-            return [
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            ]
+            switch self {
+            case .weather, .historicalAvgs, .latlong:
+                return [
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                ]
+            case .dayInTime:
+                return [
+                    "x-rapidapi-key": config["DARK_SKY_KEY"]!,
+                    "x-rapidapi-host": "dark-sky.p.rapidapi.com"
+                ]
+            }
         }
         
         func getParams(_ query: [String]) -> [String: String] {
@@ -137,15 +157,29 @@ class NetworkManager {
                     "dataset": "us-zip-code-latitude-and-longitude",
                     "q": query[0],
                 ]
+            case .dayInTime:
+                return [
+                    "latitude":"\(query[0])",
+                    "longitude":"\(query[1])",
+                    "time":"\(query[2])T00:00:01",
+                ]
             }
         }
         
         func paramsToString(_ query: [String]) -> String {
-            let parameterArray = getParams(query).map { key, value in
-                return "\(key)=\(value)"
-            }
+            switch self {
+            case .weather, .historicalAvgs, .latlong:
+                let parameterArray = getParams(query).map { key, value in
+                    return "\(key)=\(value)"
+                }
 
-            return parameterArray.joined(separator: "&")
+                return parameterArray.joined(separator: "&")
+            case .dayInTime:
+                let parameterArray = getParams(query).map { key, value in
+                    return "value"
+                }
+                return parameterArray.joined(separator: ",")
+            }
         }
     }
     
