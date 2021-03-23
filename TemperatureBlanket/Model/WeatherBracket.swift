@@ -78,7 +78,7 @@ struct ColorRange: Codable {
     }
     
     func isInRange(num: Int) -> Bool {
-        return (minTemp ?? -100 < num) && (num < maxTemp ?? 200)
+        return (minTemp ?? -100 <= num) && (num < maxTemp ?? 200)
     }
     
     func getUIColor() -> UIColor? {

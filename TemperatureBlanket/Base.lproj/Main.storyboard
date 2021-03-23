@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="TemperatureBlanket" customModuleProvider="target" sceneMemberID="viewController">
@@ -61,7 +61,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BkW-9h-J1S" secondAttribute="trailing" constant="10" id="uhW-cd-Tmv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="XL4-qD-zkX"/>
+                    <navigationItem key="navigationItem" title="Home" id="XL4-qD-zkX"/>
                     <connections>
                         <outlet property="todayWeatherColorView" destination="kbM-Ll-AHj" id="zfN-FX-mCl"/>
                         <outlet property="todayWeatherLabel" destination="ZWL-4w-HVi" id="Zjq-1B-O7I"/>
@@ -226,11 +226,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbb-I8-cc2">
+                                <rect key="frame" x="10" y="108" width="394" height="134.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Week:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhQ-xZ-QWB" userLabel="PaletteLabel">
+                                        <rect key="frame" x="0.0" y="0.0" width="165.5" height="134.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q5L-48-Bm7" userLabel="PaletteSelection">
+                                        <rect key="frame" x="165.5" y="0.0" width="228.5" height="134.5"/>
+                                    </pickerView>
+                                </subviews>
+                            </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="D9c-97-nEg">
-                                <rect key="frame" x="10" y="108" width="394" height="685"/>
+                                <rect key="frame" x="10" y="252.5" width="394" height="540.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeekCell" id="DXj-b9-0wn">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="WeekCell" id="DXj-b9-0wn">
                                         <rect key="frame" x="0.0" y="28" width="394" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DXj-b9-0wn" id="BdD-D1-hzH">
@@ -244,14 +258,20 @@
                         <viewLayoutGuide key="safeArea" id="EbT-SX-MtL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="D9c-97-nEg" firstAttribute="top" secondItem="EbT-SX-MtL" secondAttribute="top" constant="20" id="3zU-GK-hsT"/>
+                            <constraint firstItem="D9c-97-nEg" firstAttribute="top" secondItem="dbb-I8-cc2" secondAttribute="bottom" constant="10" id="3zU-GK-hsT"/>
                             <constraint firstItem="EbT-SX-MtL" firstAttribute="bottom" secondItem="D9c-97-nEg" secondAttribute="bottom" constant="20" id="TXJ-Ty-Imt"/>
+                            <constraint firstItem="lhQ-xZ-QWB" firstAttribute="width" secondItem="h5Z-Lg-txv" secondAttribute="width" multiplier="0.4" id="Urz-tQ-be9"/>
                             <constraint firstItem="D9c-97-nEg" firstAttribute="leading" secondItem="EbT-SX-MtL" secondAttribute="leading" constant="10" id="VOQ-qe-kv5"/>
+                            <constraint firstItem="EbT-SX-MtL" firstAttribute="trailing" secondItem="dbb-I8-cc2" secondAttribute="trailing" constant="10" id="VhD-wm-etZ"/>
                             <constraint firstItem="EbT-SX-MtL" firstAttribute="trailing" secondItem="D9c-97-nEg" secondAttribute="trailing" constant="10" id="XOU-g0-v8J"/>
+                            <constraint firstItem="q5L-48-Bm7" firstAttribute="height" secondItem="h5Z-Lg-txv" secondAttribute="height" multiplier="0.15" id="eqs-we-drF"/>
+                            <constraint firstItem="dbb-I8-cc2" firstAttribute="leading" secondItem="EbT-SX-MtL" secondAttribute="leading" constant="10" id="jbp-B0-C5T"/>
+                            <constraint firstItem="dbb-I8-cc2" firstAttribute="top" secondItem="EbT-SX-MtL" secondAttribute="top" constant="20" id="pgH-fJ-SDH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Records" id="frD-1a-tYd"/>
                     <connections>
+                        <outlet property="weekPicker" destination="q5L-48-Bm7" id="EpC-Pt-8sg"/>
                         <outlet property="weekViewController" destination="D9c-97-nEg" id="I7f-Fj-W3Q"/>
                     </connections>
                 </viewController>

@@ -13,16 +13,22 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var activeWeek: Int!
 
     @IBOutlet weak var weekViewController: UITableView!
-    
+    @IBOutlet weak var weekPicker: UIPickerView!
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.blanket = Blanket.retrieveBlanket()! // you shouldn't be able to get to this screen without a blanket
         self.activeWeek = (blanket.logs.indexOfLastDay() ?? (0,0)).0
+        
+        print("\(blanket.colors?.colorBrackets)")
 
         // Do any additional setup after loading the view.
         self.weekViewController.delegate = self
         self.weekViewController.dataSource = self
+        
+        self.weekPicker.delegate = self
+        self.weekPicker.dataSource = self
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,6 +44,7 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Get the day object for the cell
         let day = self.blanket.logs.dayFromInd(ind: (self.activeWeek, indexPath.row))!
         
+        
         myCell.textLabel!.text = "\(day.temp)"
         myCell.backgroundColor = blanket.colors?.getColor(temp: day.temp)
             
@@ -45,11 +52,8 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        // Set selected location to var
-//        selectedItem =
-        // Manually call segue to detail view controller
-        
+        // toggle completed
+        self.blanket.logs.dayFromInd(ind: (activeWeek, indexPath.row))!.toggleCompleted()
     }
 
     /*
@@ -62,4 +66,32 @@ class WeekViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     */
 
+}
+
+extension WeekViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    // Number of columns of data
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+       
+    // The number of rows of data
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.blanket.logs.indexOfLastDay()!.0
+    }
+       
+    // The data to return for the row and component (column) that's being passed in
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return "\(row+1)"
+    }
+    
+    // Capture the picker view selection
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.activeWeek = row
+        self.weekViewController.reloadData()
+    }
 }

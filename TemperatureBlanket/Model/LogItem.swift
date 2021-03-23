@@ -171,4 +171,8 @@ class Day: Codable {
     func isYesterday(cal: Calendar) -> Bool {
         return cal.isDateInYesterday(self.date)
     }
+    
+    func toggleCompleted() {
+        self.complete = !self.complete
+    }
 }
